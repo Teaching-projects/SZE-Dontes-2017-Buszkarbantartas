@@ -7,7 +7,7 @@ set Napok :=1..napDb;
 param ellenorzes {Buszok}; #hany naponta kell a buszokat ellenorizni
 param kIdo {Buszok,Szerelok}; #karbantartasi idok szerelok szerint oraban megadva
 #1-12ig a buszok regi ikarusok es a szerelo1 gyorsabban meg tudja oket javitani, mig 13-25ig uj credok es a szerelo2 tudja oket gyorsabban megjavitani
-param beosztas {Napok,Szerelok}; #melyik nap ki dolgozik
+param beosztas {Napok}, symbolic, in Szerelok; #melyik nap ki dolgozik
 
 param garazskapacitas;
 param munkaora;
@@ -21,14 +21,10 @@ s.t. kezdetbenMindenBuszUzemkepes {b in Buszok} : uzemkepes[1,b]=1;
 s.t. uzemkepesBeallitasa {n in Napok,b in Buszok: n>ellenorzes[b]} :
 sum{nm in Napok : nm>=n-ellenorzes[b] && nm<=n} ell[nm,b]>=uzemkepes[n,b];
 
-s.t. haUzemkepesAkkorNemLehetAGarazsba {n in Napok, b in Buszok } : garazs[n,b]<=1-uzemkepes[n,b];
-
-s.t. haEllenorzikAkkorNeLehessenAGarazsba {n in Napok,b in Buszok} :  garazs[n,b]<=1 - ell[n,b];
-
-s.t. haEllenorzikABusztAkkorAznapNemUzemkepes {n in Napok,b in Buszok} : ell[n,b]+uzemkepes[n,b]<=1;
+s.t. aktualisAllapot {n in Napok, b in Buszok} : garazs[n,b]+uzemkepes[n,b]+ell[n,b]=1;
 
 s.t. aMunkaIdotNeLepjukTul{n in Napok} :
-sum{b in Buszok, sz in Szerelok} ell[n,b]*kIdo[b,sz]*beosztas[n,sz]<=munkaora;
+sum{b in Buszok} ell[n,b]*kIdo[b,beosztas[n]]<=munkaora;
 
 s.t. napVegenAGarazsKapacitastNeLepjukTul{n in Napok} :
 sum {b in Buszok} garazs[n,b] <= garazskapacitas;
