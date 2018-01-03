@@ -1,6 +1,6 @@
 param buszDb :=25;
-set Szerelok := sz1 sz2;
-param napDb :=15;
+set Szerelok := Jozsi Pityu;
+param napDb :=30;
 
 param ellenorzes :=
 1 5
@@ -30,7 +30,7 @@ param ellenorzes :=
 25 7
 ;
 
-param kIdo : sz1 sz2 :=
+param kIdo : Jozsi Pityu :=
 1 3.1 3.2
 2 3.0 3.3
 3 3.0 3.2
@@ -44,7 +44,7 @@ param kIdo : sz1 sz2 :=
 11 3.2 3.4
 12 3.0 3.2
 13 2.4 2.3
-14 3 2.8
+14 3.0 2.8
 15 3.1 2.9 
 16 3.3 3.0
 17 2.9 2.7
@@ -59,41 +59,41 @@ param kIdo : sz1 sz2 :=
 ;
 
 param : beosztas buszszukseglet:=
-1 sz1 18
-2 sz2 16
-3 sz2 15
-4 sz1 14
-5 sz2 18
-6 sz2 16
-7 sz2 18
-8 sz1 17
-9 sz1 18
-10 sz2 15
-11 sz1 16
-12 sz1 18
-13 sz2 17
-14 sz1 15
-15 sz2 17/*
-16 sz2 14
-17 sz2 17
-18 sz1 16
-19 sz1 14
-20 sz2 17
-21 sz1 18
-22 sz2 15
-23 sz1 14
-24 sz1 17
-25 sz2 18
-26 sz1 16
-27 sz2 17
-28 sz1 15
-29 sz1 18
-30 sz2 17*/
+1 Jozsi 18
+2 Pityu 16
+3 Pityu 15
+4 Jozsi 14
+5 Pityu 18
+6 Pityu 16
+7 Pityu 18
+8 Jozsi 17
+9 Jozsi 18
+10 Pityu 15
+11 Jozsi 16
+12 Jozsi 18
+13 Pityu 17
+14 Jozsi 15
+15 Pityu 17
+16 Pityu 14
+17 Pityu 17
+18 Jozsi 16
+19 Jozsi 14
+20 Pityu 17
+21 Jozsi 18
+22 Pityu 15
+23 Jozsi 14
+24 Jozsi 17
+25 Pityu 18
+26 Jozsi 16
+27 Pityu 17
+28 Jozsi 15
+29 Jozsi 18
+30 Pityu 17
 ;
 
 param munkaora :=8;
 
 param oraber :=
-sz1 800
-sz2 850
+Jozsi 800
+Pityu 850
 ;
